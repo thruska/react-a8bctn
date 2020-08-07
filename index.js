@@ -1,13 +1,7 @@
 import "@syncfusion/ej2/fabric.css";
 import { render } from "react-dom";
 import * as React from "react";
-import {
-    GridComponent,
-    ColumnsDirective,
-    ColumnDirective,
-    Selection,
-    Inject,
-} from "@syncfusion/ej2-react-grids";
+import { GridComponent, ColumnsDirective, ColumnDirective, Selection, Inject } from "@syncfusion/ej2-react-grids";
 
 const syncWait = (ms) => {
     const end = Date.now() + ms;
@@ -20,8 +14,8 @@ export class App extends React.Component {
     componentDidMount() {
         setTimeout(() => {
             this.setState({ foo: "baz" });
-            syncWait(300);
-        }, 40);
+            syncWait(300); // simulate some work
+        }, 40); // Simulate API call delay
     }
 
     render() {
@@ -40,7 +34,7 @@ export class App extends React.Component {
                 <Inject services={[Selection]} />
             </GridComponent>
         );
-        syncWait(200);
+        syncWait(200); // simulate some work
         return grid;
     }
 }
