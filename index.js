@@ -9,11 +9,17 @@ const syncWait = (ms) => {
 };
 
 export class App extends React.Component {
-    state = { foo: "bar" };
+    state = {
+      foo: "bar",
+      dataSource: [],
+    };
 
     componentDidMount() {
         setTimeout(() => {
-            this.setState({ foo: "baz" });
+            this.setState({
+              foo: "baz",
+              dataSource: [{ id: 4 }, { id: 5 }, { id: 6 }]
+            });
             syncWait(300); // simulate some work
         }, 40); // Simulate API call delay
     }
@@ -22,7 +28,7 @@ export class App extends React.Component {
         const grid = (
             <GridComponent
                 id={"foo"}
-                dataSource={[{ id: 1 }, { id: 2 }, { id: 3 }]}
+                dataSource={this.state.dataSource}
                 selectionSettings={{ persistSelection: true }}
                 enablePersistence={true}
                 allowSelection={true}
